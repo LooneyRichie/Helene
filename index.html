@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>It Hurts, I Know - Poetry by Helene</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 50%, #0a0a0a 100%);
+            color: #d4d4d4;
+            font-family: 'Crimson Text', serif;
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Dark fog overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 80%, rgba(20, 20, 20, 0.8) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(30, 30, 30, 0.6) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 60px 0;
+            border-bottom: 1px solid #333;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        header::after {
+            content: '🥀';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            opacity: 0.6;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            color: #8B0000;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        /* Main content area */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        /* Poetry section */
+        .poetry-section {
+            background: rgba(20, 20, 20, 0.7);
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .poem {
+            margin-bottom: 70px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .poem::before {
+            content: '💀';
+            position: absolute;
+            top: -10px;
+            left: -30px;
+            opacity: 0.3;
+            font-size: 1.5rem;
+        }
+
+        .poem-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: #8B0000;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .poem-content {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #c0c0c0;
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .poem-date {
+            text-align: center;
+            color: #8B0000;
+            font-size: 1rem;
+            font-family: 'Cinzel', serif;
+            font-weight: 500;
+            margin-top: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #333;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: rgba(15, 15, 15, 0.8);
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 30px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+
+        .sidebar h3 {
+            font-family: 'Cinzel', serif;
+            color: #8B0000;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.3rem;
+        }
+
+        .quote-of-the-day {
+            background: rgba(139, 0, 0, 0.1);
+            border-left: 3px solid #8B0000;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .quote-text {
+            font-style: italic;
+            color: #b0b0b0;
+            margin-bottom: 10px;
+        }
+
+        .quote-author {
+            text-align: right;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Gothic decorations */
+        .decoration {
+            text-align: center;
+            font-size: 2rem;
+            margin: 50px 0;
+            padding: 20px 0;
+            opacity: 0.4;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid #333;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .poetry-section {
+                padding: 20px;
+            }
+        }
+
+        /* Floating rose petals animation */
+        .rose-petal {
+            position: fixed;
+            color: #8B0000;
+            font-size: 1.5rem;
+            opacity: 0.3;
+            animation: float 15s infinite linear;
+            z-index: 0;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #8B0000;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a00000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating rose petals -->
+    <div class="rose-petal" style="left: 10%; animation-delay: 0s;">🥀</div>
+    <div class="rose-petal" style="left: 30%; animation-delay: 3s;">🌹</div>
+    <div class="rose-petal" style="left: 50%; animation-delay: 6s;">🥀</div>
+    <div class="rose-petal" style="left: 70%; animation-delay: 9s;">🌹</div>
+    <div class="rose-petal" style="left: 90%; animation-delay: 12s;">🥀</div>
+
+    <div class="container">
+        <header>
+            <h1>It Hurts, I Know</h1>
+            <p class="subtitle">Poetry by Helene</p>
+        </header>
+
+        <main class="main-content">
+            <section class="poetry-section">
+
+                <div class="decoration">🌹 🥀 🌹</div>
+
+                <div class="poem">
+                    <h2 class="poem-title">That Feeling</h2>
+                    <div class="poem-content">
+                        There it is again<br>
+                        That feeling of loneliness-<br>
+                        cold and unbearable,<br>
+                        like a river on a frozen day.<br>
+                        It has attached itself yet again,<br>
+                        like a cancer spreading through my body,<br>
+                        taking over and slowly killing me,<br>
+                        drowning me as I take my last breath,<br>
+                        all alone-<br>
+                        like always
+                    </div>
+                    <div class="poem-date">Helene</div>
+                </div>
+
+                <div class="decoration">🖤 ⚰️ 🖤</div>
+
+                <div class="poem">
+                    <h2 class="poem-title">The Bird</h2>
+                    <div class="poem-content">
+                        You enter my life like a bird in migration<br>
+                        As darkness and coldness approach<br>
+                        You leave your loving impression,<br>
+                        Ignoring the weight of sadness<br>
+                        As if nothing has happened<br>
+                        Leaving me cold and empty.<br>
+                        Tearing my heart like its nothing<br>
+                        I shall sleep until the sun returns,<br>
+                        Waiting and hoping for the bird to come again
+                    </div>
+                    <div class="poem-date">Helene</div>
+                </div>
+
+                <div class="decoration">� 🥀 �</div>
+
+                <div class="poem">
+                    <h2 class="poem-title">See Me</h2>
+                    <div class="poem-content">
+                        Do you even see me?<br>
+                        I give you all of my love,<br>
+                        Even my soul, I'd let you take it<br>
+                        For I have no need of it.<br><br>
+
+                        I place it before you,<br>
+                        A plate filled with pain and sorrow.<br>
+                        I give it all to you<br>
+                        Without regret.<br><br>
+
+                        And still, I go on living<br>
+                        Hollow, empty,<br>
+                        A ghost searching for a love<br>
+                        That was never there
+                    </div>
+                    <div class="poem-date">Helene</div>
+                </div>
+
+                <div class="decoration">🖤 ⚰️ 🖤</div>
+
+                <div class="poem">
+                    <h2 class="poem-title">Sick</h2>
+                    <div class="poem-content">
+                        This sickness is eating me alive<br>
+                        The sadness moves through my veins,<br>
+                        I can feel it as it takes control,<br>
+                        leaving me unlovable.<br>
+                        It's slowly draining my life.<br><br>
+
+                        As I watch the happy people,<br>
+                        I know it will never be me.<br>
+                        I am the stranger among them,<br>
+                        the one who can't love,<br>
+                        knowing I'll never be one of them.<br>
+                        I slowly fade away<br>
+                        back into the darkness<br>
+                        where I belong
+                    </div>
+                    <div class="poem-date">Helene</div>
+                </div>
+
+                <div class="decoration">💀 🥀 💀</div>
+
+                <div class="poem">
+                    <h2 class="poem-title">Addiction</h2>
+                    <div class="poem-content">
+                        You have ruined everything<br>
+                        You just took, took, took,<br>
+                        Never once caring about the<br>
+                        Consequences.<br>
+                        The people we don't know anymore<br>
+                        Still here but with different faces,<br>
+                        Same voice but a different tone.<br>
+                        You take life,<br>
+                        In return you give us a ghost,<br>
+                        A shell of themselves,<br>
+                        Not wanting to return<br>
+                        To see a new beginning.<br>
+                        But you just kill, kill, kill,<br>
+                        Leaving nothing but pain.
+                    </div>
+                    <div class="poem-date">Helene</div>
+                </div>
+
+                <div class="decoration">🖤 ⚰️ 🖤</div>
+
+                <div class="poem">
+                    <h2 class="poem-title">Thank You</h2>
+                    <div class="poem-content">
+                        Thank you for letting me fall<br>
+                        into the dark hole that is life<br>
+                        leaving me there, inside my head,<br>
+                        to think of what I've done.<br>
+                        Darkness and guilt crush me<br>
+                        as the light sneaks away like<br>
+                        a thief in the night,<br>
+                        Slowly fading as it swallows me.<br>
+                        My throat burns as I scream for help,<br>
+                        nobody hears, because nobody's there.<br>
+                        So I lie there in my own despair<br>
+                        until the very last breath
+                    </div>
+                    <div class="poem-date">Helene</div>
+                </div>
+            </section>
+
+            <aside class="sidebar">
+                <h3>Darkness Speaks</h3>
+                
+                <div class="quote-of-the-day">
+                    <div class="quote-text">
+                        "In the depths of winter, I finally learned that within me there lay an invincible summer."
+                    </div>
+                    <div class="quote-author">— Albert Camus</div>
+                </div>
+
+                <div class="decoration">⚱️</div>
+
+                <div style="background: rgba(139, 0, 0, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                    <h4 style="color: #8B0000; margin-bottom: 15px; font-family: 'Cinzel', serif;">Recent Additions</h4>
+                    <ul style="list-style: none; color: #b0b0b0;">
+                        <li style="margin-bottom: 10px;">🖤 That Feeling</li>
+                        <li style="margin-bottom: 10px;">🥀 The Bird</li>
+                        <li style="margin-bottom: 10px;">💀 See Me</li>
+                        <li style="margin-bottom: 10px;">🖤 Sick</li>
+                        <li style="margin-bottom: 10px;">💀 Addiction</li>
+                        <li style="margin-bottom: 10px;">🥀 Thank You</li>
+                    </ul>
+                </div>
+
+                <div class="decoration">🌙</div>
+
+                <div style="text-align: center; color: #666; font-style: italic;">
+                    "Poetry is the spontaneous overflow of powerful feelings recollected in tranquility."<br>
+                    <small>— A soul in shadows</small>
+                </div>
+            </aside>
+        </main>
+
+        <footer>
+            <div class="decoration">🥀 💀 🖤 💀 🥀</div>
+            <p>&copy; 2025 It Hurts, I Know by Helene. All rights reserved.</p>
+            <p>Where beauty meets melancholy, and words become eternal.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Add some interactive darkness
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create additional floating elements randomly
+            function createFloatingElement() {
+                const symbols = ['🥀', '🌹', '💀', '🖤'];
+                const element = document.createElement('div');
+                element.className = 'rose-petal';
+                element.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                element.style.left = Math.random() * 100 + '%';
+                element.style.animationDelay = Math.random() * 15 + 's';
+                element.style.fontSize = (1 + Math.random()) + 'rem';
+                document.body.appendChild(element);
+                
+                // Remove element after animation
+                setTimeout(() => {
+                    element.remove();
+                }, 15000);
+            }
+
+            // Create new floating elements periodically
+            setInterval(createFloatingElement, 3000);
+
+            // Add subtle hover effects to poems
+            const poems = document.querySelectorAll('.poem');
+            poems.forEach(poem => {
+                poem.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.02)';
+                    this.style.transition = 'transform 0.3s ease';
+                });
+                poem.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
